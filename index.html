@@ -63,6 +63,20 @@
 		    animation: hallow-w-slide 10s ease-in-out;
 		    -webkit-animation: hallow-w-slide 10s ease-in-out;
     	}
+        #app:after{
+            content: "";
+            width: 130px;
+            height: 130px;
+            display: inline-block;
+            background: url(https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/hallow-s.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            right: 0;
+            animation: hallow-s-slide 10s infinite ease-in-out;
+            -webkit-animation: hallow-s-slide 10s infinite ease-in-out;
+        }
     	.bottom{
     		width: 100%;
     		height: 120px;
@@ -118,6 +132,51 @@
     			-webkit-transform: scale(4);
 	    		}
     	}
+        @-webkit-keyframes hallow-w-slide{
+            0%{
+                opacity: 0;
+                transform: translateX(384px) scale(0);
+                -webkit-transform: translateX(384px) scale(0);
+            }
+            90%{
+                opacity: 1;
+                transform: translateX(0%) scale(1.5);
+                -webkit-transform: translateX(0%) scale(1.5);
+            }
+            100%{
+                opacity: 0;
+                transform:  scale(4);
+                -webkit-transform: scale(4);
+                }
+        }
+        @keyframes hallow-s-slide{
+            0%{
+                transform: translateY(0);
+                -webkit-transform: translateY(0);
+            }
+            50%{
+                transform: translateY(130px);
+                -webkit-transform: translateY(130px);
+            }
+            100%{
+                transform: translateY(0%);
+                -webkit-transform: translateY(0%);
+            }
+        }
+        @-webkit-keyframes hallow-s-slide{
+            0%{
+                transform: translateY(0);
+                -webkit-transform: translateY(0);
+            }
+            50%{
+                transform: translateY(130px);
+                -webkit-transform: translateY(130px);
+            }
+            100%{
+                transform: translateY(0%);
+                -webkit-transform: translateY(0%);
+            }
+        }
     </style>
   </head>
   <body>
