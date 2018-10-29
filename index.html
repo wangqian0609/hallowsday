@@ -12,6 +12,7 @@
     	}
     	html,body{
             width: 100%;
+            min-width:1024px;
             height: 100%;
     		display: inline-block;
     	}
@@ -73,7 +74,7 @@
             background-size: cover;
             position: absolute;
             top: 0;
-            right: 0;
+            right: -65px;
             animation: hallow-s-slide 10s infinite ease-in-out;
             -webkit-animation: hallow-s-slide 10s infinite ease-in-out;
         }
@@ -183,5 +184,29 @@
     <div id="app"></div>
     <footer class="bottom"></footer>
     <!-- built files will be auto injected -->
+    <script type="text/javascript">
+        (function(){
+            //禁滚轮
+            function disableMouseWheel(){
+                if(document.addEventListener){
+                    document.addEventListener('DOMMouseScroll',scrollFunc,false);
+                }
+                window.onmousewheel = document.onmousewheel = scrollFunc;
+            }
+            function scrollFunc(evt){
+                evt = evt || window.event;
+                if(evt.preventDefault){
+                    evt.preventDefault();
+                    evt.stopPropagation();
+                }
+                else{
+                    evt.cancelBubble = true;
+                    evt.returnValue = false;
+                }
+                return false;
+            } 
+            disableMouseWheel();
+        })()
+    </script>
   </body>
 </html>
