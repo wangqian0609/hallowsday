@@ -6,11 +6,11 @@
 					<input type="text" v-model="username" placeholder="请输入你的用户名">
 				</dd>
 			</dl>
-			<div class="btnBox" v-show="isShow">
-				<input class="btn" type="button" value="确认" @click="goNext">
+			<div class="btnBox">
+				<input  v-show="isShow" class="btn" type="button" value="确认" @click="goNext">
 			</div>
 		</form>
-		<dialog-bar></dialog-bar>
+		<dialog-bar v-model="sendVal" type="danger" :title="maskTitle"  :content="maskContent"  v-on:cancel="clickCancel()" @danger="clickDanger()" @confirm="clickConfirm()" dangerText="Delete"></dialog-bar>
 	</div>
 </template>
 <style lang="scss" scoped="" type="text/css">
@@ -24,7 +24,7 @@
 	    display: flex;
 	    justify-content: center;
 	    align-items: center;
-		background-color:rgba(51,51,51,.3);
+		background-color:rgba(51,51,51,.1);
 		& > form{
 			width:100%;
 		    padding: 0 20%;
@@ -33,7 +33,7 @@
 				padding-bottom: 50px;
 				dd{
 					width:100%;
-					padding:0 20px 0 100px;
+					padding:20px 20px 20px 100px;
 					margin-bottom:20px;
 					position:relative;
 					input{
@@ -49,22 +49,24 @@
 					}
 					&:before{
 						content:'';
-						width:50px;
-						height:50px;
+						width:80px;
+						height:80px;
 						display:inline-block;
-						background:url('https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/hallow-n.png');
-						background-size:cover;
+						background:url('https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/icon.png');
+						background-size:400px 400px;
 						background-repeat:no-repeat;
-						background-position:center center;
+						background-position: -166px -34px;
 						position:absolute;
-						left:20px;
+						left:0;
 						top:0;
 					}
 				}
 			}
 			.btnBox{
 				width:100%;
+				height:100px;
 				display:inline-block;
+				cursor: pointer;
 				.btn{
 					width:258px;
 					height:100px;
@@ -90,28 +92,52 @@
 </style>
 <script type="text/javascript">
 	import dialogBar from '../components/dialog'
+
 	export default{
+		props:{
+			username:{
+				type:String,
+				default:''
+			}
+		},
 		data(){
 			return{
 				username:'',
-				isShow:false
+				isShow:false,
+				sendVal:false,
+				maskTitle:'',
+				maskContent:'',
 			}
 		},
 		components:{
 			'dialog-bar':dialogBar,
 		},
 		methods:{
-			goNext(){
-				alert('aaaa');
-				// debugger;
-				console.log(this.username);
+			openMask(index){
+				this.sendVal = true;
+			},
+			clickCancel(){
+				console.log('点击了取消');
 				this.username = '';
+			},
+			clickDanger(){
+				console.log('这里四danger回调');
+			},
+			clickConfirm(){
+				console.log('点击了确认');
+				this.$router.push({name:'Home',params:{username:this.username}})
+			},
+			goNext(){
+				console.log(this.username);
+				this.maskTitle = '欢迎光临';
+				this.maskContent = this.username + '，欢迎你的加入~';
+				this.openMask();
 			}
 		},
 		watch:{
 			username:function(){
 				if(this.username == ''){
-					console.log('快输入吧~');
+					// console.log('快输入吧~');
 					this.isShow = false;
 				}
 				else{
