@@ -11,6 +11,7 @@
 		line-height:88px;
 		padding:0 100px;
 		position:relative;
+		z-index:9;
 		.nav-left{
 			width:50px;
 			height:50px;
