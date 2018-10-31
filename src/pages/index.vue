@@ -25,6 +25,7 @@
 	    justify-content: center;
 	    align-items: center;
 		background-color:rgba(51,51,51,.1);
+		z-index:9;
 		& > form{
 			width:100%;
 		    padding: 0 20%;
@@ -95,7 +96,7 @@
 
 	export default{
 		props:{
-			username:{
+			user:{
 				type:String,
 				default:''
 			}
@@ -125,7 +126,7 @@
 			},
 			clickConfirm(){
 				console.log('点击了确认');
-				this.$router.push({name:'Home',params:{username:this.username}})
+				this.$router.push({name:'Home',params:{user:this.username}})
 			},
 			goNext(){
 				console.log(this.username);

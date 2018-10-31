@@ -14,7 +14,7 @@ export default new Router({
       component:welcome
     },
     {
-      path: '/Home/:username',
+      path: '/Home/:user',
       name: 'Home',
       component: Home
     }
