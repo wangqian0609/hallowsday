@@ -1,5 +1,7 @@
 <template>
-	<canvas id="canvas" class="canvas"></canvas>
+	<canvas id="canvasLine" class="canvas">
+		<p>你的浏览器不支持Canvas</p>
+	</canvas>
 </template>
 <style type="text/css">
 	.canvas{
@@ -11,6 +13,7 @@
 	}
 </style>
 <script type="text/javascript">
+
 	export default{
 		props:{
 			boxId:{
@@ -19,7 +22,7 @@
 			}
 		},
 		mounted() {
-			var canvas = document.querySelector('canvas'),
+			let canvas = document.getElementById('canvasLine'),
 			ctx = canvas.getContext('2d')
 			canvas.width = window.innerWidth;
 			canvas.height = window.innerHeight;
@@ -39,6 +42,7 @@
 				d_radius: 150,
 				array: []
 			};
+			
 			function colorValue(min) {
 				return Math.floor(Math.random() * 255 + min);
 			}

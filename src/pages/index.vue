@@ -133,7 +133,7 @@
 <script type="text/javascript">
 	import dialogBar from '../components/dialog'
 	import footer from '../components/footer'
-	import canvas from '../components/canvas'
+	import canvas from '../components/stars'
 
 	export default{
 		props:{
