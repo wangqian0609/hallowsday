@@ -213,7 +213,13 @@
 			},
 			clickConfirm(){
 				console.log('点击了确认');
-				this.$router.push({name:'Home',params:{user:this.username}})
+				if(!this.username || !this.userpass){
+					console.log('请输入登录信息');
+					return
+				}
+				else{
+					this.$router.push({name:'Home',params:{user:this.username}})
+				}
 			},
 			goNext(){
 				if(!this.username || !this.userpass){
