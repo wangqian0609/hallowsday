@@ -32,6 +32,8 @@
 	.storyContent{
 		width:100%;
 		height:100%;
+		background:-webkit-linear-gradient(#07030e,#5e2a0b);
+		background:linear-gradient(#07030e,#5e2a0b);
 		position:relative;
 		.story{
 			width:100%;

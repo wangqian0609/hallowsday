@@ -30,6 +30,8 @@
 		width:100%;
 		height:100%;
 		position:relative;
+		background:-webkit-linear-gradient(#07030e,#5e2a0b);
+		background:linear-gradient(#07030e,#5e2a0b);
 		.ghost{
 			width:150px;
 			height:150px;
@@ -177,7 +179,7 @@
 		data(){
 			return{
 				lists:['卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人'],
-				userName:this.$route.params.user,
+				userName:this.$route.params.user.username,
 				storyName:'',
 				Htitle:'',
 				ghostShow:false,

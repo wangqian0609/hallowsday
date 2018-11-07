@@ -24,10 +24,14 @@
 		    //实例化月亮和星星。流星是随机时间生成，所以只初始化数组
 		    // moon = new Moon(ctx, width, height),
 		    stars = new Stars(ctx, width, height, 200),
+		    lineGra = ctx.createLinearGradient(0,0,width,height),
 		    meteorArr = [],
 		    count = 0
 		    canvas.width = width;
 		    canvas.height = height;
+
+		    lineGra.addColorStop( 0 , '#07030e');
+		    lineGra.addColorStop( 1 , '#5e2a0b')
 
 		    for (var i = 0; i < 50; i++) {
 				meteorArr.push({
@@ -38,9 +42,10 @@
 				});
 			}
 
-			console.log(meteorArr);
+			// console.log(meteorArr);
 		    setInterval(function() {
-			  ctx.fillStyle = 'rgb(20,20,20)';
+			  // ctx.fillStyle = 'rgb(20,20,20)';
+			  ctx.fillStyle = lineGra;
 			  ctx.fillRect(0, 0, canvas.width, canvas.height);
 			  ctx.lineCap = 'round';
 			  for (var i = 0; i < meteorArr.length; i++) {
