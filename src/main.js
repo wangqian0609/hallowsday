@@ -10,6 +10,10 @@ import router from './router'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts
+
 new Vue({
   el: '#app',
   data(){
@@ -21,10 +25,15 @@ new Vue({
   // components: { index },
   // template: '<App/>'
   watch:{
-  	'$route'(to,from){
-  		const toDepth = to.path.substring(0,to.path.length-2).split('/').length
-  		const fromDepth = from.path.substring(0,from.path.length-2).split('/').length
-  		this.transitionName = toDepth < fromDepth ? 'slide_back':'slide'
-  	}
+    '$route' (to, from) {
+      const toDepth = to.path.split('/').length
+      const fromDepth = from.path.split('/').length
+      this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
+  	// '$route'(to,from){
+  	// 	const toDepth = to.path.substring(0,to.path.length-2).split('/').length
+  	// 	const fromDepth = from.path.substring(0,from.path.length-2).split('/').length
+  	// 	this.transitionName = toDepth < fromDepth ? 'slide_back':'slide'
+  	// }
   }
 })

@@ -20,12 +20,17 @@ export default new Router({
       mode:'history',
       path: '/Home/:user',
       name: 'Home',
-      // component:Home,
-      component: resolve => require(['@/pages/home'],resolve)
+      component:Home,
+      // component: resolve => require(['@/pages/home'],resolve)
+      children:[{
+          path:'/userInfo',
+          component:resolve => require(['@/components/userInfo'],resolve),
+      }]
+
     },
     {
       mode:'history',
-      path:'/Story',
+      path:'/Story/:user/storyName/:StoryName',
       name:'Story',
       component:resolve => require(['@/pages/storys'],resolve)
     }

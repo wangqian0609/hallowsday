@@ -2,6 +2,7 @@
 	<div id="home" class="home">
 		<canvas-part :boxId = "canvasId"></canvas-part>
 		<form>
+			<h1 class="webTitle">Vue后台管理系统</h1>
 			<dl v-if="!isShow">
 				<dd>
 					<input type="text" v-model="Num.name" placeholder="请设置您的用户名">
@@ -42,27 +43,35 @@
 <style lang="scss" scoped="" type="text/css">
 	.home{
 		width:100%;
+		min-width:1150px;
 		height:100%;
+		display: -webkit-box;
+	    -webkit-box-pack: center;
+	    -webkit-box-align: center;
 		& > form{
-			width:100%;
-			padding-top:150px;
+			width:520px;
+			// padding-top:150px;
 			margin:auto;
 			position: relative;
 			z-index:10;
-		    min-width: 320px;
-			max-width: 768px;
+			.webTitle{
+				width: 100%;
+			    font-size: 28px;
+			    color: #fff;
+			    margin-bottom: 20px;
+			}
 			dl{
 				width:100%;
 				padding:0 20% 50px;
 				dd{
 					width:100%;
-					min-height:64px;
-					padding:20px 20px 20px 100px;
-					margin-bottom:20px;
+					min-height:40px;
+					padding:5px 20px 5px 60px;
+					margin-bottom:10px;
 					position:relative;
 					input{
 						width:100%;
-						height:50px;
+						height:30px;
 						padding:0 20px;
 						line-height:50px;
 						font-family:'宋体';
@@ -73,23 +82,25 @@
 					}
 					&:before{
 						content:'';
-						width:80px;
-						height:80px;
+						width:40px;
+						height:40px;
 						display:inline-block;
 						background:url('https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/icon.png');
-						background-size:400px 400px;
+						background-size:200px 200px;
 						background-repeat:no-repeat;
-						background-position: -166px -34px;
+						background-position: -83px -17px;
 						position:absolute;
 						left:0;
 						top:0;
 					}
 					.tip{
 						width: 100%;
+						line-height:40px;
+						text-align:right;
 						display:inline-block;
 					    color: #fff;
 					    font-style: normal;
-					    font-size: 18px;
+					    font-size: 13px;
 					}
 					&:last-child:before{
 						display:none;
@@ -103,8 +114,8 @@
 				cursor: pointer;
 				.btn{
 					width:250px;
-					height:50px;
-					line-height:50px;
+					height:45px;
+					line-height:45px;
 					display:inline-block;
 					text-align:center;
 					margin:0 3% 3% 0;
@@ -118,20 +129,20 @@
 				    border-radius: 5px;
 				}
 			}
-			&:after{
-				content: "";
-				width: 130px;
-				height: 130px;
-				display: inline-block;
-				background: url(https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/hallow-s.png);
-				background-repeat: no-repeat;
-				background-size: cover;
-				position: absolute;
-				top: 0;
-				right: -65px;
-				animation: hallow-s-slide 10s infinite ease-in-out;
-				-webkit-animation: hallow-s-slide 10s infinite ease-in-out;
-			}
+		}
+		&:after{
+			content: "";
+			width: 130px;
+			height: 130px;
+			display: inline-block;
+			background: url(https://raw.githubusercontent.com/wangqian0609/hallowsday/master/src/assets/hallow-s.png);
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: absolute;
+			top: 0;
+			right: 15%;
+			animation: hallow-s-slide 10s infinite ease-in-out;
+			-webkit-animation: hallow-s-slide 10s infinite ease-in-out;
 		}
 	}
 	@keyframes hallow-s-slide{
