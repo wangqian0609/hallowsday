@@ -24,6 +24,7 @@ export default new Router({
       // component: resolve => require(['@/pages/home'],resolve)
       children:[{
           path:'/userInfo',
+          name:'userInfo',
           component:resolve => require(['@/components/userInfo'],resolve),
       }]
 

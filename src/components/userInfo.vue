@@ -1,14 +1,14 @@
 <template>
 	<div class="content">
 			<div class="infos">
-				<div v-show="noteShow" class="ShowNotes" @click="openNotice">这是一封简单的公告</div>
-				<div v-show="!noteShow" class="Notes">
+				<div v-show="NoteShow" class="ShowNotes" @click="openNotice">这是一封简单的公告</div>
+				<div v-show="!NoteShow" class="Notes">
 					<label>{{userName}}，欢迎你打开这个页面。</label>
 				</div>
 			</div>
-			<div class="menus" v-show="!noteShow">
+			<div class="menus" v-show="!NoteShow">
 				<ul>
-					<li v-for="list in lists" @click="openNext($event)">{{list}}</li>
+					<li v-for="list in Bookslists" @click="openNext($event)">{{list}}</li>
 				</ul>
 			</div>
 			<div class="clear"></div>
@@ -77,3 +77,28 @@
 	}
 }
 </style>
+<script type="text/javascript">
+	export default{
+		data(){
+			return{
+				userName: this.$route.query.user,
+				Bookslists:['卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人'],
+				NoteShow:true,
+			}
+		},
+		methods:{
+			openNotice(){
+				this.NoteShow = !this.NoteShow
+			},
+			openNext(obj){
+				// console.log(obj.currentTarget.innerHTML);
+				// debugger;
+				this.storyName = obj.currentTarget.innerHTML;
+				this.$router.push({name:'Story',params:{
+					user:this.userName,
+					StoryName:this.storyName
+				}})
+			}
+		}
+	}
+</script>

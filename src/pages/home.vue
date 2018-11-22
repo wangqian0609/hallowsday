@@ -2,9 +2,10 @@
 	<div id="home" class="home-content">
 		<canvas-part :boxId = "canvasId"></canvas-part>
 		<hallow-header :userName='userName'></hallow-header>
-		<slider-bar></slider-bar>
-		<content></content>
-		<!-- <div class="ghost" v-show="ghostShow"></div> -->
+		<slider-bar :user='userName'></slider-bar>
+		<transition name="fade">
+	      	<router-view></router-view>
+	    </transition>
 		<hallow-footer></hallow-footer>
 	</div>
 </template>
@@ -106,12 +107,11 @@
 		},
 		data(){
 			return{
-				lists:['卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人','卖红色衣服的女人'],
 				userName:this.$route.params.user,
 				storyName:'',
 				Htitle:'',
-				ghostShow:false,
-				noteShow:true,
+				// ghostShow:false,
+				// noteShow:true,
 				canvasId:'home'
 			}
 		},
@@ -122,19 +122,6 @@
 			'slider-bar':silderbar
 		},
 		methods:{
-			openNotice(){
-				this.ghostShow = true;
-				this.noteShow = !this.noteShow;
-			},
-			openNext(obj){
-				// console.log(obj.currentTarget.innerHTML);
-				// debugger;
-				this.storyName = obj.currentTarget.innerHTML;
-				this.$router.push({name:'Story',params:{
-					user:this.userName,
-					StoryName:this.storyName
-				}})
-			}
 		}
 	}
 </script>
